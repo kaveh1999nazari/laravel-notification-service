@@ -20,7 +20,7 @@ class GenerateNotification extends Command
 
 namespace App\Notifications;
 
-use YourNamespace\NotificationService\Notifications\BaseNotification;
+use Kaveh\NotificationService\Notifications\BaseNotification;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class {$name} extends BaseNotification
