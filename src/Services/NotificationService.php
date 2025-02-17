@@ -2,7 +2,6 @@
 
 namespace Kaveh\NotificationService\Services;
 
-use Illuminate\Support\Facades\App;
 use Kaveh\NotificationService\Abstracts\Authenticatable;
 use Kaveh\NotificationService\Exceptions\NotFoundNotificationType;
 use Kaveh\NotificationService\Models\NotificationChannel;
@@ -11,10 +10,21 @@ use Kaveh\NotificationService\Models\NotificationType;
 
 class NotificationService
 {
-    public static function sendNotification(string $notificationClass, Authenticatable $user, int $typeId, ?array $data = []): void
+    /**
+     * @param string $notificationClass
+     * @param Authenticatable $user
+     * @param int $notificationTypeId
+     * @param array|null $data
+     * @return void
+     * @throws NotFoundNotificationType
+     */
+    public static function sendNotification(string $notificationClass,
+                                            Authenticatable $user,
+                                            int $notificationTypeId,
+                                            ?array $data = []): void
     {
         $notificationType = NotificationType::query()
-            ->where('id', $typeId)
+            ->where('id', $notificationTypeId)
             ->first();
         if(! $notificationType) {
             throw new NotFoundNotificationType();
