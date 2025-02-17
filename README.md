@@ -13,7 +13,7 @@ composer require kaveh/notification-service
 ## Configuration
 
 1. **Register the Service Provider**  
-   Add the following line to `bootstrap/app.php`:
+   Add the following line to `bootstrap/providers.php`:
 
    ```php
    Kaveh\NotificationService\NotificationServiceProvider::class,
