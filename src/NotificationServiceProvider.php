@@ -4,7 +4,7 @@ namespace Kaveh\NotificationService;
 
 use Illuminate\Support\ServiceProvider;
 use Kaveh\NotificationService\Commands\GenerateNotification;
-use Kaveh\NotificationService\Commands\PublishMigrationsCommand;
+use Kaveh\NotificationService\Commands\RunMigrationsCommand;
 
 class NotificationServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,7 @@ class NotificationServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 GenerateNotification::class,
-                PublishMigrationsCommand::class,
+                RunMigrationsCommand::class,
             ]);
 
             $this->publishes([
