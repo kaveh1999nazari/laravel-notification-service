@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class RunMigrationsCommand extends Command
 {
-    protected $signature = 'notification-service:migrate';
+    protected $signature = 'notification:migrate';
     protected $description = 'Run migrations for NotificationService package';
 
     public function handle(): void
