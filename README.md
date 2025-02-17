@@ -55,8 +55,15 @@ composer require kaveh/notification-service
    ```php
    use Kaveh\NotificationService\Abstracts\Authenticatable;
    ```
+   And add this method in your model:
+   ```php
+   public function getId()
+    {
+        // TODO: Implement getId() method.
+    }
+   ```
 
-5. **Notification Configuration**
+6. **Notification Configuration**
     - **Notification Type:** Define the notification type, e.g., `user_login`, `order_created`, etc.
     - **Notification Channel:** Specify the notification delivery method: `email`, `sms`, `in-app`, etc.
     - **Notification Preferences:**  
