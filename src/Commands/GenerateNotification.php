@@ -14,6 +14,18 @@ class GenerateNotification extends Command
     public function handle(): void
     {
         $name = $this->argument('name');
+        $path = app_path("Notifications");
+
+        if (!is_dir($path)) {
+            mkdir($path, 0755, true);
+        }
+
+        $filePath = "$path/{$name}.php";
+
+        if (file_exists($filePath)) {
+            $this->error("Notification {$name} already exists!");
+            return;
+        }
 
         $stub = <<<PHP
 <?php
@@ -46,12 +58,7 @@ class {$name} extends BaseNotification
 }
 PHP;
 
-        $path = app_path("Notifications/{$name}.php");
-        if (file_exists($path)) {
-            $this->error("Notification {$name} already exists!");
-            return;
-        }
-        (new Filesystem())->put($path, $stub);
+        (new Filesystem())->put($filePath, $stub);
 
         $this->info("Notification {$name} created successfully.");
     }
