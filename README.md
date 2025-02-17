@@ -57,7 +57,7 @@ composer require kaveh/notification-service
    ```
    And add this method in your model:
    ```php
-     public function getId()
+   public function getId()
     {
         return $this->id;
     }
